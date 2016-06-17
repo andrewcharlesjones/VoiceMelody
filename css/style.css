@@ -35,3 +35,7 @@ body {
 	margin-top: 200px;
 	position: relative;
 }
+
+h1 {
+	font-size: 32px;
+}

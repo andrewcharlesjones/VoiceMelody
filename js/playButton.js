@@ -1,5 +1,13 @@
+var MOVING = true;
+
 
 $('#push').click(function() {
+	console.log('done got pushed')
+	MOVING = false;
+	$('#toptext').text('YAY');
+	$('#push').stop();
+	clearInterval(moveInterval);
+	console.log(MOVING)
 	$.ajax({
 		url: 'https://api.spotify.com/v1/tracks/3BxWKCI06eQ5Od8TY2JBeA',
 		id: '3BxWKCI06eQ5Od8TY2JBeA',
@@ -14,20 +22,21 @@ $('#push').click(function() {
 	});
 });
 
-$(document).ready(function() {
-	$('#push').click(function() {
-		$('#push').animate({
-			left: "200px"
-		});
-	});
-});
+// $(document).ready(function() {
+	// $('#push').click(function() {
+	// 	MOVING = false;
+	// 	$('#push').animate({
+	// 		left: "200px"
+	// 	});
+	// });
+// });
 
 function randomDir() {
 	var height = $(window).height() - 50;
 	var width = $(window).width() - 50;
 
-	var randDecVert = Math.random();
-	var randDecHorz = Math.random();
+	var randDecVert = Math.random() - .2;
+	var randDecHorz = Math.random() - .2;
 	randVert = randDecVert * height;
 	randHorz = randDecHorz * width;
 
@@ -36,14 +45,22 @@ function randomDir() {
 }
 
 function moveAround() {
-	var [v, h] = randomDir();
-	$('#push').animate({
-		top: v,
-		left: h
-	});
-	moveAround();
+	if (MOVING) {
+		var [v, h] = randomDir();
+		$('#push').animate({
+			top: v,
+			left: h
+		});
+		// moveAround();
+	}
+	else {
+		$('#toptext').innerHTML('YAY');
+		$('#push').stop();
+	}
 }
 
-$(document).ready(function() {
-	moveAround();
-});
+var moveInterval = setInterval(moveAround, 500);
+
+// window.setInterval(
+// 	moveAround(), 2000
+// );
