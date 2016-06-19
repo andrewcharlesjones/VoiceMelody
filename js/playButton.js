@@ -4,7 +4,7 @@ var MOVING = true;
 $('#push').click(function() {
 	console.log('done got pushed')
 	MOVING = false;
-	$('#toptext').text('YAY');
+	$('#toptext').text('YAY! all of my buttons hath been pushed. tysm.');
 	$('#push').stop();
 	clearInterval(moveInterval);
 	console.log(MOVING)
@@ -59,7 +59,7 @@ function moveAround() {
 	}
 }
 
-var moveInterval = setInterval(moveAround, 500);
+// var moveInterval = setInterval(moveAround, 500);
 
 // window.setInterval(
 // 	moveAround(), 2000
