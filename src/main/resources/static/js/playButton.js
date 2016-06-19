@@ -2,17 +2,17 @@ var MOVING = true;
 
 
 $('#push').click(function() {
-	console.log('done got pushed')
+	// console.log('done got pushed')
 	MOVING = false;
 	$('#toptext').text('YAY! all of my buttons hath been pushed. tysm.');
 	$('#push').stop();
 	clearInterval(moveInterval);
-	console.log(MOVING)
+	// console.log(MOVING)
 	$.ajax({
 		url: 'https://api.spotify.com/v1/tracks/3BxWKCI06eQ5Od8TY2JBeA',
 		id: '3BxWKCI06eQ5Od8TY2JBeA',
 		success: function(response) {
-			console.log(response);
+			// console.log(response);
 			var track = response.preview_url;
 			var audio = new Audio();
 			audio.src = track;
@@ -59,7 +59,7 @@ function moveAround() {
 	}
 }
 
-// var moveInterval = setInterval(moveAround, 500);
+var moveInterval = setInterval(moveAround, 500);
 
 // window.setInterval(
 // 	moveAround(), 2000
